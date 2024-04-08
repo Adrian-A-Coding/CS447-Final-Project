@@ -1,9 +1,16 @@
 const http = require('http');
-//When you make a GET request to http://localhost:3000/food?ingredients={your_ingredients}
-//It will return food items based on the provided ingredients.
+const https = require('https'); // Add this to handle https requests
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors());
+
+// Create an HTTP server that listens for requests on /food endpoint
 const server = http.createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     if (req.url.startsWith('/food')) {
-        const ingredients = new URL(req.url.startsWith('/food') ? req.url : `/food${req.url}`, `http://${req.headers.host}`).searchParams.get('ingredients');
+        const ingredients = new URL(req.url, `http://${req.headers.host}`).searchParams.get('ingredients');
 
         if (!ingredients) {
             res.writeHead(400, { 'Content-Type': 'application/json' });
@@ -13,13 +20,14 @@ const server = http.createServer((req, res) => {
 
         const apiUrl = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(ingredients)}&search_simple=1&action=process&json=1`;
 
-        http.get(apiUrl, (apiRes) => {
-            let data = '';
+        const protocol = new URL(apiUrl).protocol;
+        const requester = protocol === 'https:' ? https : http;
 
+        requester.get(apiUrl, (apiRes) => {
+            let data = '';
             apiRes.on('data', (chunk) => {
                 data += chunk;
             });
-
             apiRes.on('end', () => {
                 try {
                     const foodItems = JSON.parse(data).products.map(product => ({
