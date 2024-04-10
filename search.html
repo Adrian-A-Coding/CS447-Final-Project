@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Food Safety Checker</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+    header {
+        background-color: #436b52;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        position: relative; /* Added to make position absolute work */
+    }
+    main {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #bde6c3;
+        border-radius: 10px;
+        text-align: center;
+    }
+    h2 {
+        margin-top: 0;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    select, input, button {
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center; /* Center the text */
+    }
+    /* Style for the home button */
+    .home-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #436b52;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>Pet Food Safety Checker</h1>
+    <a href="mainwebpage.html" class="home-button">Home</a> <!-- Home button -->
+</header>
+
+<main>
+    <section>
+        <h2>Search for Pet Food Safety</h2>
+        <label for="petSelect">Select your pet:</label>
+        <select id="petSelect">
+            <option value="dogs">Dogs</option>
+            <option value="cats">Cats</option>
+            <option value="rabbits">Rabbits</option>
+            <option value="birds">Birds</option>
+            <option value="rats">Rats</option>
+            <option value="hamsters">Hamsters</option>
+            <option value="fish">Fish</option>
+            <option value="ferrets">Ferrets</option>
+        </select>
+        <br><br>
+        <input type="text" id="foodInput" placeholder="Enter food item...">
+        <button onclick="checkFood()">Check</button>
+        <div id="safeFoods">
+            <h3>Safe Foods</h3>
+            <ul id="safeList"></ul>
+        </div>
+        <div id="unsafeFoods">
+            <h3>Unsafe Foods</h3>
+            <ul id="unsafeList"></ul>
+        </div>
+    </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
