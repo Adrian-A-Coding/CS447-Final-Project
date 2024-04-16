@@ -57,6 +57,34 @@
             display: block;
         }
     }
+    .quickSearches {
+        background-color: #436b52;
+        text-align: center;
+        height: 35%;
+        width: 100px;
+
+        position: absolute;
+        bottom: 0;
+        left: 10;
+    }
+    .searchItems {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: block;
+    }
+    .searchItems:hover {
+        background-color: #bde6c3;
+    }
+    .divider {
+        background-color: #7ba288;
+        position: relative;
+        text-align: center;
+    }
+    .littleTitle {
+        color: #fff;
+        padding: 20px 15px;
+    }
 </style>
 </head>
 <body>
@@ -73,7 +101,17 @@
     </ul>
 </nav>
 <main>
+    <div class="quickSearches">
+        <div class="divider">
+            <h4 class="littleTitle">Quick Searches</h4>
+        </div>
 
+        <a href="#" class="searchItems">Dogs</a>
+        <a href="#" class="searchItems">Cats</a>
+        <a href="#" class="searchItems">Birds</a>
+        <a href="#" class="searchItems">Rabbits</a>
+        <a href="#" class="searchItems">Ferrets</a>
+    </div>
 </main>
 </body>
 </html>
